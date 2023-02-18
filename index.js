@@ -22,13 +22,19 @@ The loop starts with i = 1 and increments i by 7 in each iteration, so the loop 
 // Solution to Question No 5
 function nearestPowerOfTwo(num) {
   let pwr = 1;
+  let prevPwr = pwr;
   while (pwr < num) {
+    prevPwr = pwr;
     pwr *= 2;
   }
-  return pwr;
+  if (num - prevPwr <= pwr - num) {
+    return prevPwr;
+  } else {
+    return pwr;
+  }
 }
 
 let num = 40;
 let pwr = nearestPowerOfTwo(num);
 
-console.log("The number " + pwr + " " + "is the power of 2 nearest to" + " " + num)
+console.log("The number " + pwr + " " + "is the power of 2 nearest to" + " " + num);
